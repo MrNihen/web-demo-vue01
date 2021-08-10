@@ -1,39 +1,44 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Layout from "@/components/Layout";
+const Layout = () => import('../components/Layout')
 const Index = () => import('../views/Index');
+const StudentList = () => import('../views/student/StudentList')
+const StudentUpdate = () => import('../views/student/StudentUpdate')
+const StudentAdd = () => import('../views/student/StudentAdd')
+const ClassesList = () => import('../views/classes/ClassesList')
 
 Vue.use(VueRouter)
 
 const routes = [
+
   {
     path: '/',
-    name: 'Layout',
-    component: Layout,
+    component:Layout,
     redirect: 'index',
   },
   {
     path: '/index',
-    name: 'Index',
-    component: Index,
+    component: Index
   },
-
-
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: function () {
-  //     return import(/* webpackChunkName: "about" */ '../views/About.vue')
-  //   }
-  // }
+  {
+    path: '/student/list',
+    component: StudentList,
+  },
+  {
+    path: '/student/add',
+    component: StudentAdd,
+  },
+  {
+    path: '/student/update',
+    component: StudentUpdate,
+  },
+  {
+    path: '/classes/list',
+    component: ClassesList,
+  },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
